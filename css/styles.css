@@ -33,7 +33,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #f4623a;
+  --bs-primary: #f59fda;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -11299,7 +11299,11 @@ body {
 }
 
 .page-section {
-  padding: 8rem 0;
+  padding: 5rem 0;
+}
+
+.page-contact {
+  padding: 4rem 0;
 }
 
 .text-white-75 {
