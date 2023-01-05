@@ -14,13 +14,15 @@
 <body>    
     <div id="ReturnAndShareControls"></div>
     <h1 id="DemoTitle">
-      Page Visibility API與focus,blur事件偵測
+      視窗切換事件偵測
     </h1>
 	<h2>
-      此網站可以用來測試視窗切換是否被觸發
+      此網站可以測試Page Visibility API與focus,blur等視窗切換之事件是否被觸發
   </h2>
-</p>
-	<p id="message">等待使用者切換視窗</p>
+</p></p></p>
+    <h3>
+      Page Visibility API
+    </h3>
     <div id="DemoContent">
         <canvas id="canvas" width="1080" height="300"></canvas>
         <img id="Img1" src="./Page Visibility API_files/Background3.png" style="display:none;">
@@ -32,6 +34,14 @@
     <script type="text/javascript" src="./Page Visibility API_files/Demo.js.&#19979;&#36617;"></script>
     <script type="text/javascript" src="./Page Visibility API_files/TestDriveCommon.js.&#19979;&#36617;"></script>
     <script type="text/javascript" src="./Page Visibility API_files/ReturnAndShareControls.js.&#19979;&#36617;"></script>
+    </p></p></p>
+    <h2>
+      Focus , blur , pagehide 視窗切換偵測(使用window.addEventListener)
+    </h2>
+  </p>
+    <h2 id="message">
+      等待使用者切換視窗
+    </h2>
 	<script>
       window.addEventListener('focus', function() {
         document.getElementById('message').innerHTML = '你回到了視窗';
