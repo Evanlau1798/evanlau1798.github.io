@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>切換視窗事件</title>
+</head>
+<body>
+  <h1>切換視窗事件</h1>
+  <p id="message">等待使用者切換視窗</p>
+
+  <script>
+    window.addEventListener('focus', function() {
+      document.getElementById('message').innerHTML = '你回到了視窗';
+    });
+  </script>
+  <script>
+    window.addEventListener('blur', function() {
+      document.getElementById('message').innerHTML = '你跳出了視窗';
+    });
+  </script>
+  <script>
+    window.addEventListener('pagehide', function() {
+      document.getElementById('message').innerHTML = '你切換了分頁';
+    });
+  </script>
+</body>
+</html>
