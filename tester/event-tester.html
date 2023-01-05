@@ -1,26 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>切換視窗事件</title>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="IE10 Test Drive Demo">
+    <meta name="t_omni_demopage" content="1">
+    <title>Page Visibility API</title>
+    <link rel="stylesheet" type="text/css" href="./Page Visibility API_files/BaseStyles.css">
+    <link rel="stylesheet" type="text/css" href="./Page Visibility API_files/DemoTemplate.css">
+    <link rel="stylesheet" type="text/css" href="./Page Visibility API_files/ReturnAndShareControls.css">
+    <link rel="stylesheet" type="text/css" href="./Page Visibility API_files/Demo.css">
+    <link rel="shortcut icon" href="https://testdrive-archive.azurewebsites.net/Includes/Image/FavIcon.ico">
+    <script type="text/javascript" src="./Page Visibility API_files/FeatureDetection.js.&#19979;&#36617;" data-detect=""></script>
 </head>
-<body>
-  <h1>切換視窗事件</h1>
-  <p id="message">等待使用者切換視窗</p>
+<body>    
+    <div id="ReturnAndShareControls"></div>
+    <h1 id="DemoTitle">
+      Page Visibility API與focus,blur事件偵測
+    </h1>
+	<h2>
+      此網站可以用來測試視窗切換是否被觸發
+  </h2>
+</p>
+	<p id="message">等待使用者切換視窗</p>
+    <div id="DemoContent">
+        <canvas id="canvas" width="1080" height="300"></canvas>
+        <img id="Img1" src="./Page Visibility API_files/Background3.png" style="display:none;">
+        <img id="Img2" src="./Page Visibility API_files/Border2.png" style="display:none;">
+        <img id="Img3" src="./Page Visibility API_files/grid2.png" style="display:none;">
+        <div id="DemoWarning">Your browser does not currently support the Page Visibility API, an emerging 
+        specification in the <a href="http://www.w3.org/2010/webperf/">Web Performance Working Group</a>.</div>
+        </div>
+    <script type="text/javascript" src="./Page Visibility API_files/Demo.js.&#19979;&#36617;"></script>
+    <script type="text/javascript" src="./Page Visibility API_files/TestDriveCommon.js.&#19979;&#36617;"></script>
+    <script type="text/javascript" src="./Page Visibility API_files/ReturnAndShareControls.js.&#19979;&#36617;"></script>
+	<script>
+      window.addEventListener('focus', function() {
+        document.getElementById('message').innerHTML = '你回到了視窗';
+      });
+    </script>
+    <script>
+      window.addEventListener('blur', function() {
+        document.getElementById('message').innerHTML = '你跳出了視窗';
+      });
+    </script>
+    <script>
+      window.addEventListener('pagehide', function() {
+        document.getElementById('message').innerHTML = '你切換了分頁';
+      });
+    </script>
 
-  <script>
-    window.addEventListener('focus', function() {
-      document.getElementById('message').innerHTML = '你回到了視窗';
-    });
-  </script>
-  <script>
-    window.addEventListener('blur', function() {
-      document.getElementById('message').innerHTML = '你跳出了視窗';
-    });
-  </script>
-  <script>
-    window.addEventListener('pagehide', function() {
-      document.getElementById('message').innerHTML = '你切換了分頁';
-    });
-  </script>
-</body>
-</html>
+</body></html>
