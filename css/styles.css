@@ -11309,30 +11309,67 @@ body {
   width: 100%;
   height: 100%;
 }
+/* modify start */
 
-.page-section {
-  padding: 20px 0;
-}
-.container {
-  width: 100%;
-  max-width: 1200px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 0 15px;
-}
 .row {
   display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
+  flex-wrap: wrap;
+  justify-content: space-around; /* 確保區塊之間有間隔 */
 }
-.col-md-4 {
-  position: relative;
-  width: 33.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
+
+.col {
+  flex: 0 0 30%; /* 每個區塊佔據大約30%的寬度 */
+  margin: 10px; /* 增加邊距以提供更多空間 */
+  padding: 15px;
+  min-width: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.col:nth-child(1) {
+  background: linear-gradient(to right, #333, #555);
+}
+
+.col:nth-child(2) {
+  background: linear-gradient(to right, #7289DA, #8395DA);
+}
+
+.col:nth-child(3) {
+  background: linear-gradient(to right, #FFC0CB, #FFD6E0);
+}
+
+@media (min-width: 768px) {
+  .col:hover {
+      transform: scale(1.03); /* 稍微減少放大的比例 */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 放大時增加陰影 */
+  }
+}
+
 .btn-xl {
-  padding: 10px 20px;
-  font-size: 20px; /* Adjust as needed */
+  padding: 1.25rem 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
+  transition: background-color 0.3s, box-shadow 0.3s; /* 添加平滑過渡效果 */
+}
+
+.btn-xl:hover {
+  background-color: #fff; /* 滑鼠懸停時更改背景顏色 */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* 添加白色閃光效果 */
+}
+
+/* modify end */
+
+.btn-original-xl {
+  padding: 1.25rem 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
 }
 
 .page-section {
@@ -11347,14 +11384,7 @@ body {
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
-.btn-xl {
-  padding: 1.25rem 2.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10rem;
-}
+
 
 hr.divider {
   height: 0.2rem;
