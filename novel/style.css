@@ -1,0 +1,217 @@
+/* --- 字體定義 --- */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/elffont-rock.otf') format('opentype');
+}
+
+/* --- CSS 變數定義 (方便主題切換) --- */
+:root {
+    --bg-color: #FDF0F0; /* 原始粉色系 */
+    --text-color: #333;
+    --header-bg: rgba(255, 219, 220, 0.8);
+    --control-bg: #fff;
+    --control-hover-bg: #f0f0f0;
+    --font-size: 20px;
+    --line-height: 1.8;
+    --font-family-zhuyin: 'CustomFont', sans-serif;
+    --font-family-chinese: 'LXGW WenKai Mono TC', serif;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1b1b1b;
+    --text-color: #a9a9a9;
+    --header-bg: rgba(27, 27, 27, 0.8);
+    --control-bg: #333;
+    --control-hover-bg: #555;
+}
+
+[data-theme="sepia"] {
+    --bg-color: #f4e8d1;
+    --text-color: #5b4636;
+    --header-bg: rgba(244, 232, 209, 0.8);
+    --control-bg: #efe4d0;
+    --control-hover-bg: #e5d9c5;
+}
+
+
+/* --- 基本樣式 --- */
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- 頂部導覽列 --- */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.novel-title {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align: center;
+    flex-grow: 1;
+    /* 讓標題在小螢幕換行 */
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+}
+
+.controls button {
+    background-color: var(--control-bg);
+    color: var(--text-color);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+[data-theme="dark"] .controls button {
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+.controls button:hover {
+    background-color: var(--control-hover-bg);
+    transform: scale(1.1);
+}
+
+/* --- 主要內容區 --- */
+.novel-container {
+    padding: 80px 20px 40px; /* 增加頂部 padding 以免被 header 遮擋 */
+}
+
+.novel-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.novel-content p {
+    margin: 0 0 1.5em;
+    /* 增加段首縮排，更像書本 */
+    text-indent: 2em;
+}
+
+.font-zhuyin {
+    font-family: var(--font-family-zhuyin);
+}
+
+.font-chinese {
+    font-family: var(--font-family-chinese);
+}
+
+
+/* --- 設定面板 --- */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: -320px; /* 初始隱藏在右側 */
+    width: 300px;
+    height: 100%;
+    background-color: var(--bg-color);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.settings-panel.show {
+    right: 0;
+}
+
+.settings-panel h2 {
+    margin-top: 20px;
+    text-align: center;
+    font-family: var(--font-family-chinese);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.setting-group {
+    margin-top: 30px;
+}
+.setting-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: var(--font-family-chinese);
+}
+
+.font-size-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.font-size-control button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+.font-size-control span {
+    font-size: 18px;
+}
+
+.theme-options {
+    display: flex;
+    justify-content: space-around;
+}
+.theme-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    cursor: pointer;
+}
+.theme-swatch[data-theme="light"] { background-color: #FDF0F0; }
+.theme-swatch[data-theme="dark"] { background-color: #1b1b1b; }
+.theme-swatch[data-theme="sepia"] { background-color: #f4e8d1; }
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    .novel-title {
+        font-size: 0.9em;
+    }
+    .controls button {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
